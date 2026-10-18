@@ -69,7 +69,7 @@ a:focus-visible { outline: 2px solid var(--realce); outline-offset: 3px; border-
   display: flex;
   flex-direction: column;
 }
-.mapa svg { flex: 1; width: 100%; min-height: 0; }
+.mapa svg { flex: 1; width: 100%; min-height: 0; overflow: visible; }
 .mapa figcaption { font-size: 13px; color: var(--suave); padding-top: 8px; max-width: 34ch; }
 #a-pt { fill: var(--terra); stroke: var(--costa); stroke-width: 1.2; transition: fill .25s; }
 .area { fill: var(--realce-tinta); stroke: var(--realce); stroke-width: 1.6; transition: fill .25s, opacity .25s; }
@@ -81,7 +81,8 @@ a:focus-visible { outline: 2px solid var(--realce); outline-offset: 3px; border-
 .mapa[data-ativo="pt"] #a-pt { fill: var(--realce-tinta); }
 .mapa[data-ativo="rh2"] .g-rh2 > *,
 .mapa[data-ativo="lisboa"] .g-lisboa > *,
-.mapa[data-ativo="vieira"] .g-vieira > * { opacity: 1; }
+.mapa[data-ativo="vieira"] .g-vieira > *,
+.mapa[data-ativo="leca"] .g-leca > * { opacity: 1; }
 .mapa[data-ativo="rh2"] #a-rh2, .mapa[data-ativo="lisboa"] #a-lisboa { fill: var(--realce); fill-opacity: .45; }
 
 /* ---------- texto ---------- */
@@ -129,6 +130,7 @@ h2 {
 }
 .abrir:hover { background: var(--realce); color: #fff; }
 .links a:not(.abrir) { align-self: center; }
+.nota-plataforma { margin: 14px 0 0; }
 
 footer { margin-top: 64px; font-size: 14px; color: var(--suave); }
 footer p { margin: 0 0 6px; max-width: 62ch; }
@@ -156,7 +158,7 @@ footer p { margin: 0 0 6px; max-width: 62ch; }
 
   <figure class="mapa" id="mapa">
     <svg viewBox="0 0 527 1040" role="img" aria-labelledby="mapa-titulo">
-      <title id="mapa-titulo">Mapa de Portugal Continental com as áreas de estudo: região hidrográfica do Cávado, Ave e Leça (RH2), Vieira do Minho e Lisboa.</title>
+      <title id="mapa-titulo">Mapa de Portugal Continental com as áreas de estudo: região hidrográfica do Cávado, Ave e Leça (RH2), bacia do Leça, Vieira do Minho e Lisboa.</title>
       <path id="a-pt" d="M20.0,668.3L27.7,653.1L33.3,636.8L31.6,625.8L33.4,617.9L32.6,611.9L42.2,593.5L45.3,583.0L46.0,572.0L42.2,564.0L42.5,560.8L41.5,558.8L35.3,557.0L37.2,554.9L40.0,555.2L39.8,553.9L41.1,556.4L44.0,556.7L45.7,555.5L45.5,553.3L48.2,554.1L57.4,547.6L62.8,542.5L71.1,530.2L74.0,528.6L76.3,529.6L75.1,526.4L77.6,525.1L85.8,512.9L84.3,508.4L89.6,488.5L117.9,410.9L116.5,403.4L111.5,398.6L123.6,361.9L135.3,314.9L135.6,311.4L134.4,311.0L136.2,310.4L133.6,310.7L140.1,291.5L150.6,247.7L151.5,238.5L148.3,215.0L146.6,214.2L144.9,208.5L144.0,207.7L143.3,208.1L143.0,208.1L142.8,207.9L142.7,206.3L142.4,208.9L141.8,207.1L138.0,177.7L135.8,176.0L131.0,161.9L132.9,150.0L130.8,145.4L130.5,136.0L126.5,120.8L126.0,112.8L124.0,110.3L123.4,112.1L118.3,97.4L120.7,85.4L118.9,82.1L119.8,75.5L127.5,66.4L136.5,62.3L138.2,56.0L150.1,49.0L150.8,43.7L153.9,40.3L159.7,38.6L166.8,39.2L169.6,37.6L170.6,34.3L181.6,33.8L183.6,35.7L187.1,34.2L190.4,35.0L193.1,32.3L197.6,33.5L199.7,29.6L201.6,29.7L206.0,25.8L208.0,26.3L210.0,22.8L213.4,23.9L216.7,20.0L218.2,22.1L219.1,37.2L228.2,33.9L231.4,35.8L233.1,40.6L232.9,46.6L226.9,48.7L225.0,51.9L221.8,53.1L220.1,58.4L214.1,66.4L216.5,74.0L220.9,73.5L221.5,84.7L226.4,86.6L231.7,86.7L237.0,85.2L239.7,82.5L243.3,82.6L247.1,74.9L256.6,73.2L258.7,63.7L261.9,64.3L260.8,76.7L263.5,79.5L264.5,76.9L268.1,75.4L267.6,72.5L275.9,72.0L279.3,69.1L283.7,70.4L288.3,67.4L295.1,72.4L304.9,72.2L301.2,79.1L301.3,82.4L314.3,79.9L316.5,78.2L315.4,76.0L317.0,74.6L318.5,74.2L319.4,76.1L324.1,75.3L325.4,80.2L328.0,82.0L327.8,86.4L331.4,83.6L333.1,79.6L336.6,77.6L338.0,79.9L343.9,79.5L360.9,72.1L364.2,64.5L361.9,60.2L362.4,54.3L363.4,52.8L366.3,53.5L368.7,50.7L376.4,53.9L378.7,58.5L388.1,58.2L392.0,53.7L395.1,54.6L397.1,59.2L404.5,60.0L407.9,58.3L414.7,58.7L416.1,49.7L422.3,51.2L425.0,59.0L432.3,60.9L443.6,59.4L448.8,54.2L454.4,59.3L451.0,70.1L459.1,72.3L456.8,79.3L457.5,82.1L454.8,87.1L455.3,90.3L451.8,97.1L454.8,100.5L455.0,108.2L462.2,113.6L468.2,111.6L470.0,108.1L483.0,109.4L490.6,112.1L497.7,117.5L500.5,122.4L505.5,124.7L507.3,128.5L500.7,138.9L497.7,140.4L498.7,143.1L496.6,143.5L497.2,145.7L494.0,147.2L491.1,153.0L491.9,157.0L487.2,160.6L489.5,165.3L484.5,166.9L482.4,164.0L479.1,165.7L478.6,168.6L481.0,170.6L475.5,172.9L473.9,175.7L475.2,177.1L472.9,178.3L472.4,181.2L465.3,184.0L464.7,185.2L466.6,187.0L464.0,188.9L461.8,189.2L460.2,187.1L456.1,193.0L453.2,194.3L451.3,194.0L450.2,191.2L449.1,193.5L442.0,192.9L435.9,200.3L433.4,207.4L425.0,214.9L424.6,216.9L427.0,220.8L419.3,233.9L410.6,235.9L403.6,233.8L401.4,235.5L402.9,240.7L412.2,250.7L413.8,259.8L416.6,263.0L419.7,263.6L420.8,267.7L420.8,270.6L417.3,271.1L418.8,280.0L416.8,288.6L419.9,295.5L420.8,304.8L422.5,306.1L416.3,319.2L415.3,324.6L421.9,327.5L422.8,335.0L420.0,337.0L415.0,346.7L417.3,355.1L425.3,363.3L423.5,365.1L423.5,370.3L419.0,371.4L413.7,376.0L412.8,382.8L407.0,384.9L400.5,384.3L398.4,388.2L393.6,388.6L389.1,398.1L391.1,400.0L391.7,409.7L394.7,412.3L395.6,411.0L402.4,412.2L406.0,421.0L409.8,422.1L409.1,423.7L411.5,425.7L412.1,430.2L414.1,431.3L410.8,437.7L411.2,445.1L408.0,448.4L408.6,458.6L402.0,467.1L398.7,467.6L396.3,470.5L398.0,477.8L392.5,497.5L385.1,499.9L376.5,498.9L372.3,501.0L357.3,498.5L345.1,503.7L339.0,501.8L334.8,502.7L327.0,499.7L314.2,499.5L316.3,501.0L316.3,505.0L320.5,513.7L326.3,516.9L330.9,524.3L336.8,525.1L338.2,532.5L341.1,534.4L343.3,533.1L343.9,535.0L351.3,539.0L349.3,544.2L350.2,547.6L347.2,553.6L349.1,556.0L349.6,562.3L361.1,573.3L358.6,578.2L359.7,586.8L364.8,590.8L375.8,593.8L373.7,603.4L374.5,605.9L380.3,607.6L390.3,603.8L396.7,607.4L401.8,614.8L401.2,618.9L403.7,621.9L392.4,641.4L388.8,644.6L391.7,649.9L390.7,652.8L386.4,654.7L382.3,662.2L377.5,662.6L365.0,676.0L357.9,680.1L356.1,696.6L357.1,698.7L360.5,699.4L358.0,701.9L357.5,706.3L354.4,708.7L351.6,715.0L351.7,719.3L350.0,720.7L349.0,727.5L350.2,728.3L352.1,726.6L352.4,729.2L346.9,735.7L349.7,734.9L355.4,738.8L356.7,743.5L367.3,756.1L372.3,765.6L375.2,766.3L377.0,774.1L385.4,786.7L388.3,783.3L389.8,783.5L389.3,785.0L391.7,783.1L394.0,784.0L396.7,779.7L401.2,778.4L402.5,780.1L404.8,777.2L406.4,778.2L407.9,776.5L407.6,779.0L408.7,778.9L403.1,787.0L405.7,789.6L403.0,797.8L400.4,799.4L398.4,814.8L394.9,814.4L391.6,816.4L389.0,815.4L388.4,812.8L383.6,810.8L379.2,813.6L380.4,818.4L372.3,820.8L367.9,818.9L358.8,823.4L361.0,828.3L360.0,834.4L355.9,839.3L355.8,844.8L349.6,855.1L338.7,865.2L334.9,866.1L335.3,869.1L333.8,869.6L330.9,878.0L330.3,881.9L331.6,884.3L329.8,884.8L330.0,887.9L328.1,887.3L327.6,892.0L325.8,892.2L324.8,896.1L322.5,895.9L322.9,901.1L320.8,902.8L322.1,905.1L319.7,905.9L321.4,911.3L324.4,911.8L325.7,916.4L328.8,918.5L328.1,922.1L329.9,925.2L329.8,929.7L331.7,931.6L329.1,933.6L332.5,937.0L332.4,952.4L335.6,959.6L333.8,964.2L336.8,968.6L337.9,977.1L340.1,980.2L329.2,978.4L312.4,985.2L267.5,1017.8L267.4,1018.6L266.9,1019.7L267.2,1018.3L264.8,1020.0L257.0,1018.3L232.2,1000.5L219.0,995.4L207.6,996.0L200.6,998.9L191.1,993.3L179.3,996.2L166.6,992.3L164.1,989.9L159.3,990.6L153.8,988.8L144.9,991.2L143.5,992.9L143.7,997.3L134.5,995.7L125.1,1000.2L117.0,1000.6L113.3,1004.2L108.7,1004.0L100.3,1013.4L97.9,1007.3L92.7,1007.8L95.5,1003.6L95.2,1001.5L98.2,998.6L98.8,994.0L102.0,991.3L107.4,980.4L106.0,978.2L106.6,975.7L105.1,974.4L108.6,972.5L114.2,960.4L113.4,955.6L111.4,955.4L112.5,952.4L111.3,950.2L116.7,944.5L124.2,927.1L123.6,921.0L126.0,909.2L121.0,896.9L124.7,882.5L124.7,876.8L126.2,874.9L122.2,868.1L125.8,851.0L124.5,838.2L122.1,833.0L116.4,832.2L117.2,834.1L114.3,831.5L116.3,832.2L114.7,829.4L111.1,828.9L110.8,831.1L110.6,827.8L113.5,825.6L117.4,818.2L125.8,793.8L128.5,776.9L126.9,754.8L121.2,739.0L108.5,725.9L107.3,721.3L104.9,725.6L97.8,727.3L95.3,730.8L90.5,733.6L84.5,735.8L78.6,734.2L74.5,736.7L69.2,736.6L65.0,740.4L61.0,739.5L66.3,728.0L67.3,717.5L62.9,702.0L55.5,691.5L57.5,691.0L57.3,689.6L58.0,690.6L58.9,689.2L73.2,686.8L73.2,691.1L73.9,690.1L74.3,692.3L80.2,694.5L81.7,691.9L86.3,689.4L86.1,688.0L88.4,687.8L88.6,681.6L94.0,676.5L90.7,676.9L92.6,673.9L97.4,675.0L102.4,673.2L96.8,674.1L97.5,672.7L93.8,672.2L97.2,668.4L98.5,669.8L96.0,671.0L98.9,670.0L98.8,668.5L102.4,668.5L99.2,667.9L101.0,665.7L97.2,667.1L100.0,664.9L98.1,665.0L100.4,660.3L96.1,666.8L92.5,660.6L91.3,654.1L82.5,666.1L80.8,678.3L78.2,682.8L63.9,688.0L59.4,687.7L60.5,685.3L56.5,684.3L51.7,685.1L46.4,689.4L36.1,683.7L32.4,684.0L32.1,686.0L25.8,684.9L21.9,682.3L24.2,674.3ZM106.3,977.9L106.3,978.1L106.4,978.1ZM84.6,690.9L84.4,690.7L84.4,690.9Z"/>
       <g class="g-rh2">
         <path id="a-rh2" class="area" d="M163.2,201.9L161.5,203.3L161.2,207.8L159.0,210.4L157.4,210.4L156.9,208.7L155.1,207.7L152.2,204.4L151.2,207.4L150.1,208.4L150.1,211.0L149.2,212.0L147.6,212.0L147.2,213.8L145.7,211.8L144.9,208.5L144.0,207.7L143.2,208.1L143.0,208.1L142.8,207.8L143.8,207.6L142.7,206.3L142.0,207.2L142.4,208.8L141.8,207.0L142.6,205.1L141.3,203.0L141.3,199.5L139.4,195.4L140.2,192.6L137.6,182.3L138.0,177.7L135.8,176.0L135.8,173.6L134.0,170.5L134.5,170.2L133.4,170.7L133.7,168.9L131.0,161.9L132.5,155.7L132.9,150.0L130.8,145.4L131.4,143.0L130.5,141.0L130.5,136.0L128.0,124.3L129.1,126.4L133.2,127.6L134.4,130.3L136.0,130.3L136.8,129.1L139.1,131.2L140.5,130.8L142.3,132.4L143.8,132.3L146.2,130.3L146.4,129.2L149.1,129.3L150.4,128.1L152.7,127.7L153.3,126.4L155.5,125.7L155.7,124.6L156.7,125.3L159.8,122.7L161.9,123.9L163.2,123.0L166.8,123.8L168.0,120.9L166.7,120.1L167.7,117.0L169.1,116.5L171.6,112.7L175.4,112.4L176.3,110.3L179.9,108.3L181.6,104.7L185.1,102.6L186.9,103.1L188.0,101.6L193.7,100.7L194.8,99.0L194.5,96.9L195.6,95.5L198.4,95.0L201.2,96.3L204.2,96.4L204.8,95.2L209.0,92.7L209.1,91.3L210.6,89.9L213.9,89.5L213.9,88.2L215.6,87.4L216.9,85.5L220.3,86.7L221.5,84.8L222.5,84.7L225.4,86.6L228.6,85.9L231.7,86.7L232.3,85.9L237.0,85.2L239.7,82.5L243.4,82.6L244.4,79.2L245.8,78.3L247.1,74.9L249.0,73.8L253.7,74.6L257.5,72.9L259.1,76.7L260.8,76.8L263.6,79.6L264.7,76.7L268.1,75.5L268.0,73.7L270.5,73.6L273.4,74.8L273.6,73.8L274.9,73.8L274.9,72.3L277.1,71.5L279.3,69.2L280.1,69.3L280.4,71.1L282.3,71.6L282.8,70.6L284.7,71.2L285.5,72.7L281.7,77.4L282.3,78.7L281.2,79.0L282.9,82.6L282.3,83.3L284.4,84.9L285.1,91.9L281.6,97.9L280.3,98.7L279.4,102.7L278.0,102.2L274.7,104.5L272.0,103.9L270.6,105.8L268.7,105.6L268.7,107.7L264.9,110.6L263.6,110.1L262.6,112.7L260.2,113.6L259.5,115.2L260.8,117.5L258.8,118.7L258.9,120.4L258.0,120.3L257.2,122.3L256.1,122.8L255.3,125.9L254.3,126.4L254.6,127.8L249.6,125.4L247.9,126.6L245.8,126.4L245.5,124.3L243.4,126.1L240.0,126.7L237.2,130.7L233.6,133.5L234.7,136.5L233.7,136.1L232.7,137.8L229.9,137.7L232.1,140.1L231.9,145.2L234.0,146.0L235.8,148.3L234.6,152.2L235.4,153.3L235.3,156.2L237.2,158.3L236.5,162.0L234.2,162.1L233.8,161.5L232.0,163.2L230.6,163.2L229.7,164.7L230.4,166.7L229.1,167.1L228.5,169.2L227.3,170.1L225.2,169.6L223.5,170.5L221.6,169.1L217.2,170.3L215.2,169.8L213.9,171.5L210.4,171.0L209.4,172.2L209.2,174.4L206.4,177.6L206.9,178.6L202.5,182.6L201.4,179.6L200.2,179.2L200.0,177.8L198.5,176.5L194.6,179.3L190.2,178.5L189.3,180.0L188.3,180.1L186.9,183.1L184.0,184.6L183.4,188.5L181.5,191.7L180.2,191.8L179.4,194.7L177.2,195.0L176.2,196.5L175.0,196.0L174.1,198.7L172.4,199.4L172.7,200.8L171.0,203.2L169.3,203.7L168.0,201.2L164.8,202.5Z"/>
@@ -166,6 +168,11 @@ footer p { margin: 0 0 6px; max-width: 62ch; }
         <line class="guia" x1="225.8" y1="120.4" x2="299.5" y2="120.4"/>
         <circle class="ponto" cx="225.8" cy="120.4" r="8"/>
         <text class="rotulo" x="305.5" y="127.4">Vieira do Minho</text>
+      </g>
+      <g class="g-leca">
+        <line class="guia" x1="162.6" y1="196.0" x2="122.0" y2="196.0"/>
+        <circle class="ponto" cx="162.6" cy="196.0" r="8"/>
+        <text class="rotulo" x="116.0" y="203.0" text-anchor="end">Bacia do Leça</text>
       </g>
       <g class="g-lisboa">
         <path id="a-lisboa" class="area" d="M63.9,688.0L60.6,688.2L59.4,687.7L60.8,684.9L61.1,684.9L61.2,683.6L61.8,683.1L61.8,681.7L64.0,679.8L63.7,678.6L64.4,677.2L64.4,676.2L63.5,674.7L64.0,673.6L65.5,673.1L65.2,672.5L65.6,672.2L65.5,671.8L66.3,670.5L67.8,669.3L69.2,669.0L71.9,666.4L72.9,666.1L73.5,666.4L73.6,667.6L77.1,668.5L79.4,670.2L80.5,670.1L80.5,666.0L82.5,666.1L81.8,674.1L80.8,678.3L80.3,679.8L78.2,682.8L74.0,685.4L71.1,685.4L69.5,686.0L67.7,685.9L65.7,686.6Z"/>
@@ -180,7 +187,7 @@ footer p { margin: 0 0 6px; max-width: 62ch; }
       <h1>Daniel Rodrigues</h1>
       <p class="lead">Clima, seca e deteção remota em Portugal.</p>
       <p>A minha formação é em engenharia do ambiente e geoinformática. Trabalho com reanálises climáticas, redes de estações e imagens de satélite, e transformo-as em mapas e aplicações que qualquer pessoa pode consultar no navegador.</p>
-      <p>Cada projeto tem uma demonstração pública, com o método, as limitações e as fontes. O código de processamento fica num repositório privado.</p>
+      <p>Cada demonstração descreve o método, as limitações e as fontes. O código de processamento não é público.</p>
       <ul class="contactos">
         <li><a href="mailto:drodrigues704@gmail.com">drodrigues704@gmail.com</a></li>
         <li><a href="tel:+351963240494">963 240 494</a></li>
@@ -231,6 +238,44 @@ footer p { margin: 0 0 6px; max-width: 62ch; }
           <p class="dados">ClimateEU, downscaling de um ensemble de 8 modelos globais CMIP6.</p>
           <p class="links"><a class="abrir" href="https://drodrigues704-coder.github.io/ClimateEU_PT_showcase/">Abrir a aplicação</a><a href="https://github.com/drodrigues704-coder/ClimateEU_PT_showcase">Repositório</a></p>
         </article>
+      </section>
+
+      <section aria-labelledby="t-plataformas">
+        <h2 id="t-plataformas">Aplicações no Google Earth Engine e no ArcGIS Online</h2>
+
+        <article class="projeto" data-area="leca">
+          <h3>Ilhas de calor e refúgios térmicos na bacia do Leça</h3>
+          <p class="onde">Bacia do Rio Leça, 2015–2025</p>
+          <p>Ilha de calor da superfície, conforto térmico e refúgios térmicos, ano a ano. Ao clicar num ponto mostra a evolução da temperatura nesse local; um gráfico mostra a evolução das áreas e a tendência em toda a bacia.</p>
+          <p class="dados">Google Earth Engine.</p>
+          <p class="links"><a class="abrir" href="https://drodrigues704.projects.earthengine.app/view/ilhas-de-calor-e-frio-urbano">Abrir a aplicação</a></p>
+        </article>
+
+        <article class="projeto" data-area="pt">
+          <h3>Delimitação de áreas ardidas</h3>
+          <p class="onde">Ocorrências de incêndio em Portugal</p>
+          <p>Uma ferramenta de apoio à fotointerpretação. A partir das coordenadas e da data de uma ocorrência, procura as áreas ardidas candidatas, permite comparar as imagens de antes e depois do fogo e exporta a área escolhida para SIG.</p>
+          <p class="dados">Sentinel-2 e focos ativos VIIRS, no Google Earth Engine.</p>
+          <p class="links"><a class="abrir" href="https://drodrigues704.users.earthengine.app/view/detecaoareaardida">Abrir a aplicação</a></p>
+        </article>
+
+        <article class="projeto" data-area="pt">
+          <h3>Poluentes atmosféricos por satélite</h3>
+          <p class="onde">Portugal por distrito, 2020–2025</p>
+          <p>Poluentes atmosféricos medidos por satélite, por distrito, ano a ano ou em média de todo o período, com a tendência do distrito, a série temporal de qualquer ponto e o raster para descarregar em GeoTIFF.</p>
+          <p class="dados">Sentinel-5P (TROPOMI), no Google Earth Engine.</p>
+          <p class="links"><a class="abrir" href="https://drodrigues704.projects.earthengine.app/view/poluentessentinel5p">Abrir a aplicação</a></p>
+        </article>
+
+        <article class="projeto" data-area="vieira">
+          <h3>Incêndios rurais em Vieira do Minho</h3>
+          <p class="onde">Concelho de Vieira do Minho, 2014–2024</p>
+          <p>Painel com as ocorrências e a área ardida por freguesia, por tipo de causa e ao longo do tempo.</p>
+          <p class="dados">ArcGIS Online.</p>
+          <p class="links"><a class="abrir" href="https://www.arcgis.com/apps/dashboards/57008a9042d14d2dbcff26930cf6774d">Abrir o painel</a></p>
+        </article>
+
+        <p class="dados nota-plataforma">Abrem nas plataformas da Google e da Esri e podem demorar alguns segundos a carregar.</p>
       </section>
 
       <section aria-labelledby="t-estudos">
